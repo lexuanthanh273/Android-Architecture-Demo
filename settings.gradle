@@ -1,0 +1,11 @@
+include ':app',
+        ':common',
+        ':common_test',
+        ':navigation',
+        ':data:local',
+        ':data:model',
+        ':data:remote',
+        ':data:repository',
+        ':features:home',
+        ':features:detail'
+rootProject.name='Modularization Smart App'
