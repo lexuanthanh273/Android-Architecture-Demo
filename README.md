@@ -11,6 +11,13 @@ https://proandroiddev.com/easy-navigation-in-a-multi-module-android-project-2374
  <img src ="https://miro.medium.com/max/1750/1*t3wkUWCWnG1fzbm4oDBZsQ.png"/>
 </p>
 
+<p align="center">
+ <img src ="https://miro.medium.com/max/1750/1*Qby1SHSjmFEJT_ycbcpysQ.png"/>
+</p>
+<p align="center">
+ <img src ="https://miro.medium.com/max/1750/1*yIgPADBFtgDkGmwMjEkwJQ.png"/>
+</p>
+https://medium.com/@davidadeyyinka/how-i-learned-clean-architecture-for-android-9f549e5132ff
 ### Architecture Components
 This application implements the following concepts :
 - MVVM + Data binding
