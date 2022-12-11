@@ -1,11 +1,27 @@
-include ':app',
-        ':common',
-        ':common_test',
-        ':navigation',
-        ':data:local',
-        ':data:model',
-        ':data:remote',
-        ':data:repository',
-        ':features:home',
-        ':features:detail'
-rootProject.name='Modularization Smart App'
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+rootProject.name = "Smart-Lottery"
+include ':app'
+
+include ':domain'
+include ':common'
+include ':core'
+
+include ':data:local'
+include ':data:remote'
+include ':data:repository'
+
+include ':navigation'
+
+include ':preference'
+
+include ':features:home'
+include ':features:splash'
+include ':features:crash'

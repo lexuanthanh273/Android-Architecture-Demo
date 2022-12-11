@@ -1,22 +1,24 @@
-apply plugin: 'com.android.library'
-apply from: '../../android_commons.gradle'
+plugins {
+    id 'com.android.library'
+}
+apply from: '../../android_base.gradle'
+
+android {
+    namespace 'com.smartlottery.repository'
+}
 
 dependencies {
-    // MODULES
-    implementation project(Modules.remote)
-    implementation project(Modules.local)
-    api project(Modules.model)
-    // ANDROID
-    implementation KotlinLibraries.kotlinCoroutineCore
-    implementation AndroidLibraries.kotlinCoroutineAndroid
-    implementation AndroidLibraries.lifecycleExtensions
-    // KOIN
-    implementation Libraries.koin
-    implementation Libraries.koinViewModel
-    // TESTS
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.mockk
-    testImplementation TestLibraries.archCoreTest
-    testImplementation TestLibraries.coroutine
-    testImplementation project(Modules.commonTest)
+    implementation project(':core')
+
+    implementation project(":data:local")
+    implementation project(":data:remote")
+    implementation project(":domain")
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.lib_versions.retrofit"
+    implementation "com.jakewharton.timber:timber:$rootProject.ext.lib_versions.timber"
+
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.lib_versions.moshi"
+
+    implementation "com.tinder.scarlet:scarlet:$rootProject.ext.lib_versions.scarlet"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.lib_versions.rxjava"
 }

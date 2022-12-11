@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  SubText  -->
+    <style name="SlSubTextBold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_9sdp</item>
+    </style>
+    <style name="SlSubTextMedium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_9sdp</item>
+    </style>
+
+    <style name="SlSubTextSemiBold" parent="SlTextBase.SemiBold">
+        <item name="android:textSize">@dimen/_9sdp</item>
+    </style>
+
+    <style name="SlSubTextRegular" parent="SlTextBase.Regular">
+        <item name="android:textSize">@dimen/_9sdp</item>
+    </style>
+
+    <!--  Body3  -->
+    <style name="SlBody3Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="SlBody3Medium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="SlBody3SemiBold" parent="SlTextBase.SemiBold">
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="SlLBody3Regular" parent="SlTextBase.Regular">
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+    <!--  Body2  -->
+    <style name="SlBody2Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+    <style name="SlBody2MediumH" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+    <style name="SlBody2SemiBold" parent="SlTextBase.SemiBold">
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+    <style name="SlBody2Regular" parent="SlTextBase.Regular">
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+    <!--  Body1  -->
+    <style name="SlBody1Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+
+    <style name="SlBody1Medium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+
+    <style name="SlBody1SemiBold" parent="SlTextBase.SemiBold">
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+
+    <style name="SlBody1Regular" parent="SlTextBase.Regular">
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+
+    <!--  Body0  -->
+    <style name="SlBody0Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="SlBody0Medium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="SlBody0SemiBold" parent="SlTextBase.SemiBold">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="SlBody0Regular" parent="SlTextBase.Regular">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <!--  H3  -->
+    <style name="SlH3Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_19sdp</item>
+    </style>
+
+    <style name="SlH3Medium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_19sdp</item>
+    </style>
+
+    <!--  H2  -->
+    <style name="SlH2Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_23sdp</item>
+    </style>
+
+    <style name="SlH2Medium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_23sdp</item>
+    </style>
+
+    <!--  H1  -->
+    <style name="SlH1Bold" parent="SlTextBase.Bold">
+        <item name="android:textSize">@dimen/_37sdp</item>
+    </style>
+
+    <style name="SlH1Medium" parent="SlTextBase.Medium">
+        <item name="android:textSize">@dimen/_37sdp</item>
+    </style>
+
+    <!--  TextBase  -->
+    <style name="SlTextBase.Bold" parent="SlTextBase">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/sf_pro_regular</item>
+    </style>
+
+    <style name="SlTextBase.Medium" parent="SlTextBase">
+        <item name="android:fontFamily">@font/sf_pro_medium</item>
+    </style>
+
+    <style name="SlTextBase.Regular" parent="SlTextBase">
+        <item name="android:fontFamily">@font/sf_pro_regular</item>
+    </style>
+
+    <style name="SlTextBase.SemiBold" parent="SlTextBase">
+        <item name="android:fontFamily">@font/sf_pro_semibold</item>
+    </style>
+
+    <style name="SlTextBase" />
+
+</resources>

@@ -1,0 +1,17 @@
+plugins {
+    id 'com.android.library'
+}
+apply from: '../android_base.gradle'
+
+android {
+    namespace 'com.smartlottery.preference'
+}
+
+dependencies {
+    implementation project(':common')
+
+    implementation "androidx.datastore:datastore-preferences:$rootProject.ext.lib_versions.datastore_pref"
+    implementation "androidx.datastore:datastore-preferences-core:$rootProject.ext.lib_versions.datastore_pref"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.lib_versions.moshi"
+
+}

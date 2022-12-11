@@ -1,32 +1,34 @@
-/**
- * Feature dependencies
- */
-apply plugin: 'com.android.library'
-apply from: '../../android_core_dependencies.gradle'
-apply from: '../../android_commons.gradle'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply from: '../../android_base.gradle'
+
+android {
+    buildFeatures {
+        viewBinding = true
+    }
+}
 
 dependencies {
-    implementation project(Modules.common)
 
-    implementation project(Modules.repository)
-    implementation project(Modules.navigation)
-    // KOIN (Because each feature has to handle its dependencies)
-    implementation Libraries.koin
-    implementation Libraries.koinViewModel
-    // TEST
-    androidTestImplementation TestLibraries.androidTestRunner
-    androidTestImplementation TestLibraries.junit
-    androidTestImplementation project(Modules.commonTest)
-    androidTestImplementation TestLibraries.mockkAndroid
-    androidTestImplementation TestLibraries.fragmentNav
-    androidTestImplementation TestLibraries.espresso
-    androidTestImplementation TestLibraries.espressoContrib
-    androidTestImplementation TestLibraries.koin
-    androidTestImplementation TestLibraries.archCoreTest
-    testImplementation TestLibraries.androidTestRunner
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.mockk
-    testImplementation TestLibraries.archCoreTest
-    kaptAndroidTest TestLibraries.databinding
-    testImplementation project(Modules.commonTest)
+    //Android
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.lib_versions.appcompat"
+    implementation "androidx.core:core-ktx:$rootProject.ext.lib_versions.core"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.ext.lib_versions.fragment_ktx"
+    implementation "androidx.activity:activity-ktx:$rootProject.ext.lib_versions.activity_ktx"
+    implementation "com.google.android.material:material:$rootProject.ext.lib_versions.material"
+    implementation "androidx.viewpager2:viewpager2:$rootProject.ext.lib_versions.viewpager2"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.lib_versions.constraint"
+    implementation "androidx.dynamicanimation:dynamicanimation:$rootProject.ext.lib_versions.dynamicanimation"
+    implementation "androidx.annotation:annotation:$rootProject.ext.lib_versions.annotation"
+
+    //For Load Image
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.lib_versions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.lib_versions.glide"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.lib_versions.glide"
+
+
+    implementation "androidx.exifinterface:exifinterface:$rootProject.ext.lib_versions.exifinterface"
+
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 }

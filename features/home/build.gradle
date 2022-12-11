@@ -1,20 +1,33 @@
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 apply from: '../../android_feature_dependencies.gradle'
-apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    defaultConfig {
-        testInstrumentationRunner "com.modularization.common_test.FakeRunner"
-    }
-    dataBinding {
-        enabled true
-    }
-    testOptions {
-        animationsDisabled = true
-    }
+    namespace 'com.smartlottery.home'
 }
 
+
 dependencies {
-    // GLIDE
-    implementation Libraries.glide
+    implementation project(':common')
+    implementation project(':core')
+    implementation project(':domain')
+    implementation project(':preference')
+    implementation project(':navigation')
+
+
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.ext.lib_versions.swipe_refresh_layout"
+
+    implementation "com.squareup.moshi:moshi:$rootProject.ext.lib_versions.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.lib_versions.moshi"
+
+
+    implementation 'id.zelory:compressor:3.0.1'
+
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging-ktx:23.1.0'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 }

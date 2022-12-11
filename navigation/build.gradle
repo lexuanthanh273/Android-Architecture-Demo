@@ -1,8 +1,13 @@
-apply plugin: 'com.android.library'
-apply from: '../android_commons.gradle'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+plugins {
+    id 'com.android.library'
+}
+apply from: '../android_base.gradle'
+
+android {
+    namespace 'com.smartlottery.navigation'
+}
 
 dependencies {
-    implementation AndroidLibraries.navigation
-    implementation AndroidLibraries.navigationFrag
+    implementation project(':common')
+
 }

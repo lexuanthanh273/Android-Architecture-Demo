@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">@color/baseColorPurple</color>
+    <color name="colorPrimaryVariant">@color/baseColorPurple_2</color>
+
+    <color name="colorSecondary">@color/baseColorOrange</color>
+    <color name="colorSecondaryVariant">@color/baseColorOrange_2</color>
+
+</resources>

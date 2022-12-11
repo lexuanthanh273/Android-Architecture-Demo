@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_home_pager"
+        android:layout_width="match_parent"
+        android:name="com.architecture.home.HomePagerFragment"
+        android:layout_height="match_parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:layout_height="match_parent"
+        android:focusable="true" />
+
+    <FrameLayout
+        android:id="@+id/layout_progress_bar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_dialog_dim"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateDrawable="@drawable/custom_progress_bar_drawable" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_loading_message"
+                style="@style/SlBody1SemiBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/progress_circular"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/neutral_1_1"
+                android:visibility="gone"
+                tools:text="Đang xử lý"
+                tools:visibility="visible" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+
+</FrameLayout>

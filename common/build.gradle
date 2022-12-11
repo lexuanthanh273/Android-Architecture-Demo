@@ -1,9 +1,12 @@
-apply plugin: 'com.android.library'
-apply from: '../android_commons.gradle'
+plugins {
+    id 'com.android.library'
+}
+
+apply from: '../android_base.gradle'
+
+android {
+    namespace 'com.smartlottery.common'
+}
 
 dependencies {
-    implementation AndroidLibraries.appCompat
-    implementation AndroidLibraries.navigation
-    implementation AndroidLibraries.navigationFrag
-    implementation project(Modules.navigation)
 }

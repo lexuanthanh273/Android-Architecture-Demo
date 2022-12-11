@@ -1,21 +1,38 @@
-apply plugin: 'kotlin'
+plugins {
+    id 'com.android.library'
+}
+apply from: '../../android_base.gradle'
+
+android {
+    namespace 'com.smartlottery.remote'
+}
 
 dependencies {
-    // KOTLIN
-    implementation KotlinLibraries.kotlin
-    // NETWORK
-    implementation Libraries.retrofitCoroutineAdapter
-    implementation Libraries.gson
-    implementation Libraries.retrofit
-    implementation Libraries.retrofitGsonConverter
-    implementation Libraries.httpLoggingInterceptor
-    // DATA MODULE
-    implementation project(Modules.model)
-    // KOIN
-    implementation Libraries.koin
-    implementation Libraries.koinViewModel
-    // TEST
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.koin
-    testImplementation TestLibraries.mockWebServer
+    implementation project(':common')
+    implementation project(':preference')
+
+    //Coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$rootProject.ext.lib_versions.retrofitCoroutines"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.lib_versions.moshi"
+    implementation "com.squareup.moshi:moshi:$rootProject.ext.lib_versions.moshi"
+    implementation "com.squareup.moshi:moshi-adapters:$rootProject.ext.lib_versions.moshi"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$rootProject.ext.lib_versions.moshi"
+
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.lib_versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.ext.lib_versions.retrofitMoshi"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.lib_versions.okHttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.lib_versions.okHttp"
+    implementation "com.jakewharton.timber:timber:$rootProject.ext.lib_versions.timber"
+
+    mockImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+
+    //For Plugin Okhttp Profiler
+    implementation 'com.localebro:okhttpprofiler:1.0.8'
+
+    implementation "com.tinder.scarlet:scarlet:$rootProject.ext.lib_versions.scarlet"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.lib_versions.rxjava"
 }

@@ -1,0 +1,48 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-parcelize'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+    }
+    buildTypes {
+        mock {}
+        debug {}
+        release {}
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    //Coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.ext.lib_versions.coroutines_core"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.ext.lib_versions.coroutines"
+
+    //Hilt
+    implementation "com.google.dagger:hilt-core:$rootProject.ext.lib_versions.hilt"
+    implementation "com.google.dagger:hilt-android:$rootProject.ext.lib_versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.ext.lib_versions.hilt"
+    kapt "androidx.hilt:hilt-compiler:$rootProject.ext.lib_versions.hiltAndroidxVersion"
+
+    implementation platform("com.google.firebase:firebase-bom:$rootProject.ext.lib_versions.boom")
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+}

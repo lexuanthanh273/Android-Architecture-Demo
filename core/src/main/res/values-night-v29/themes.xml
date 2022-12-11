@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Demo" parent="Theme.SmartLottery.Base">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+</resources>

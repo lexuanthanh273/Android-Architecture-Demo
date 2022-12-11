@@ -1,24 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.modularization.smartapp">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+<!--    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:allowBackup="true"
+        android:name=".App"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="true"
+        android:usesCleartextTraffic="true"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:name=".App"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Demo">
+        <activity
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize"
+            android:launchMode="singleTop"
+            android:name="com.architecture.splash.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <!-- dùng để nhận sharing dữ liệu từ app khác như SMS...-->
+                <!-- https://medium.com/androiddevelopers/sharing-content-between-android-apps-2e6db9d1368b-->
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="text/plain"/>
+
+            </intent-filter>
         </activity>
+
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.architecture.home.HomeActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:windowSoftInputMode="adjustResize"
+            android:name="com.architecture.crash.CrashActivity"
+            android:exported="true">
+        </activity>
+
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_logo_app" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
+
+<!--        <receiver android:name="com.smartlottery.home.smstemplate.SmsBroadcastReceiver"-->
+<!--            android:exported="true"-->
+<!--            android:permission="android.permission.BROADCAST_SMS">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <provider
+            android:name="com.architecture.core.provider.CameraFileProvider"
+            android:authorities="${applicationId}.app.file.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:multiprocess="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/album_camera_provider" />
+        </provider>
     </application>
 
 </manifest>

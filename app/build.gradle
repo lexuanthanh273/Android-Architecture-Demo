@@ -1,33 +1,143 @@
-apply plugin: 'com.android.application'
-apply from: '../android_commons.gradle'
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+apply from: '../android_base.gradle'
+apply plugin: 'com.google.gms.google-services'
+
+//apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
+
     defaultConfig {
-        applicationId ApplicationId.id
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId rootProject.ext.eng_app_id
+
+        archivesBaseName = "app-$versionName"
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
     }
-    dataBinding {
-        enabled true
+
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    signingConfigs {
+        mock {
+            storeFile file("../mock.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        debug {
+            storeFile file("../debug.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            storeFile rootProject.ext.keystore_store_file
+            storePassword rootProject.ext.keystore_store_password
+            keyAlias rootProject.ext.keystore_key_alias
+            keyPassword rootProject.ext.keystore_key_password
+        }
+    }
+    namespace 'com.smartlottery.android'
+
+    buildTypes {
+        mock {
+            applicationIdSuffix ".mock"
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.mock
+            ext.alwaysUpdateBuildId = false
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
+            signingConfig signingConfigs.debug
+
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            minifyEnabled false
+            ext.alwaysUpdateBuildId = false
+            firebaseCrashlytics {
+                mappingFileUploadEnabled false
+            }
+            signingConfig signingConfigs.debug
+
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            crunchPngs false
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled true
+                mappingFileUploadEnabled true
+                unstrippedNativeLibsDir 'build/intermediates/merged_native_libs/release/out/lib'
+            }
+        }
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
+kapt {
+    useBuildCache true
+    correctErrorTypes true
+}
+
 dependencies {
-    // COMMON
-    implementation project(Modules.common)
-    // DATA modules
-    implementation project(Modules.local)
-    implementation project(Modules.remote)
-    implementation project(Modules.repository)
-    // FEATURES modules
-    implementation project(Modules.featureHome)
-    implementation project(Modules.featureDetail)
-    // NAVIGATION
-    implementation project(Modules.navigation)
-    // KOIN
-    implementation Libraries.koin
-    implementation Libraries.koinViewModel
-    // ANDROID
-    implementation AndroidLibraries.appCompat
-    implementation AndroidLibraries.navigation
-    implementation AndroidLibraries.navigationFrag
+    implementation project(':common')
+
+    implementation project(":core")
+    implementation project(":preference")
+
+    implementation project(":domain")
+    implementation project(":data:repository")
+    implementation project(":data:remote")
+    implementation project(":features:splash")
+    implementation project(":features:home")
+    implementation project(":features:crash")
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation "com.google.android.material:material:$rootProject.ext.lib_versions.material"
+
+    implementation "androidx.work:work-runtime-ktx:$rootProject.ext.lib_versions.work_version"
+    implementation "androidx.hilt:hilt-work:$rootProject.ext.lib_versions.hiltAndroidxVersion"
+
+    //For Load Image
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.lib_versions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.lib_versions.glide"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.lib_versions.glide"
+
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
 }

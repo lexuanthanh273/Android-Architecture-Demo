@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+apply from: '../../android_feature_dependencies.gradle'
+
+android {
+    namespace 'com.smartlottery.splash'
+}
+
+dependencies {
+    implementation project(':common')
+    implementation project(':core')
+    implementation project(':domain')
+
+    implementation project(':preference')
+    implementation project(':navigation')
+}
